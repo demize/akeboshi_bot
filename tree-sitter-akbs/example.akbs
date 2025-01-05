@@ -1,0 +1,1 @@
+/announce $(twitch $(touser) "Go check out {{displayName}} at {{url}} ! They were last streaming {{game}}.")
