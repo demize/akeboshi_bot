@@ -27,8 +27,20 @@
       ]
     },
     "command": {
-      "type": "STRING",
-      "value": "/announce"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "announce"
+          }
+        }
+      ]
     },
     "_expression": {
       "type": "PREC_RIGHT",

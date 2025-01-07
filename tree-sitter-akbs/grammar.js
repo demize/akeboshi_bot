@@ -13,7 +13,7 @@ module.exports = grammar({
   rules: {
     // TODO: add the actual grammar rules
     input: ($) => seq(optional($.command), repeat($._expression)),
-    command: ($) => "/announce", // only supported command atm
+    command: ($) => seq("/", token.immediate("announce")), // only /announce is supported, but other commands might be eventually
     _expression: ($) =>
       prec.right(
         seq(

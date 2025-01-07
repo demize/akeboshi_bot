@@ -1,5 +1,10 @@
 [
   {
+    "type": "command",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "function",
     "named": true,
     "fields": {
@@ -226,8 +231,8 @@
     "named": true
   },
   {
-    "type": "command",
-    "named": true
+    "type": "announce",
+    "named": false
   },
   {
     "type": "{",
