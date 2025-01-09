@@ -21,6 +21,14 @@ module.exports = grammar({
           repeat($.punctuation),
         ),
       ),
+    _esc_expression: ($) =>
+      prec.right(
+        seq(
+          repeat($.esc_punctuation),
+          choice($.variable, $.function, $.identifier, $.alnum),
+          repeat($.esc_punctuation),
+        ),
+      ),
     variable: ($) => seq("$(", field("name", $.identifier), ")"),
     function: ($) =>
       seq(
@@ -31,7 +39,7 @@ module.exports = grammar({
       ),
     parameter: ($) =>
       choice(
-        $._expression,
+        $._esc_expression,
         seq('"', prec.left(repeat($._expression)), '"'),
         seq("'", prec.left(repeat($._expression)), "'"),
         seq("`", prec.left(repeat($._expression)), "`"),
@@ -70,8 +78,42 @@ module.exports = grammar({
           "}",
         ),
       ),
+    esc_punctuation: ($) =>
+      prec(
+        -1,
+        choice(
+          ",",
+          ".",
+          "/",
+          ";",
+          "'",
+          "[",
+          "]",
+          "!",
+          "@",
+          "#",
+          "$",
+          "%",
+          "^",
+          "&",
+          "*",
+          "\\(",
+          "\\)",
+          "-",
+          "_",
+          "=",
+          "+",
+          "<",
+          ">",
+          "?",
+          ":",
+          "\\\\",
+          "{",
+          "}",
+        ),
+      ),
     alnum: ($) => /[a-zA-Z0-9-_]+/,
     identifier: ($) => choice(/\d/, /[a-z]+/),
   },
-  inline: ($) => [$.punctuation],
+  inline: ($) => [$.punctuation, $.esc_punctuation],
 });
