@@ -38,3 +38,8 @@ dist/
 *.tar.gz
 *.tgz
 *.zip
+
+# CMake artifacts
+CMakeCache.txt
+/CMakeFiles
+cmake_install.cmake

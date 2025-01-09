@@ -11,7 +11,6 @@ module.exports = grammar({
   name: "akbs",
 
   rules: {
-    // TODO: add the actual grammar rules
     input: ($) => seq(optional($.command), repeat($._expression)),
     command: ($) => seq("/", token.immediate("announce")), // only /announce is supported, but other commands might be eventually
     _expression: ($) =>
@@ -33,7 +32,6 @@ module.exports = grammar({
     parameter: ($) =>
       choice(
         $._expression,
-        // "a"
         seq('"', prec.left(repeat($._expression)), '"'),
         seq("'", prec.left(repeat($._expression)), "'"),
         seq("`", prec.left(repeat($._expression)), "`"),
