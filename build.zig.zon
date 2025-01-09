@@ -26,8 +26,7 @@
         .url = "https://github.com/tree-sitter/zig-tree-sitter/archive/refs/tags/v0.24.1.tar.gz",
         .hash = "12206c44990aab41e534a0d8d597f856a46cd39b9fb26ad77708f9d37751ea730c50",
     }, .tree_sitter_akbs = .{
-        .url = "/tree-sitter-akbs",
-        .hash = "1220cdbd5cf1d4f04d9b57f6005cacc7ce3b0d9256734c7b9c9b5f1925c615686240",
+        .path = "./tree-sitter-akbs",
     } },
     .paths = .{
         "build.zig",
